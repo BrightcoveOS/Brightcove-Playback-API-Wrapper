@@ -24,17 +24,17 @@ $video = $bc->find('find_video_by_id', 'videos', $videoid);
 echo '<img src="' . $video->poster . '" />';
 
 //find video by reference id
-$refid = ref123;
-$video = $bc->find('find_video_by_reference_id', 'videos', $ref123);
+$refid = "ref:ref123";
+$video = $bc->find('find_video_by_reference_id', 'videos', $refid);
 
-//find playlist by video id
-$videoid = 54321;
-$playlist = $bc->find('find_playlist_by_id', 'playlists', $54321);
+//find playlist by playlist id
+$playlistid = 54321;
+$playlist = $bc->find('find_playlist_by_id', 'playlists', $playlistid);
 echo '<img src="' . $playlist->videos[0]->poster . '" />';
 
 //find playlist by reference id
-$refid = ref321;
-$playlist = $bc->find('find_playlist_by_reference_id', 'playlists', $ref321);
+$refid = "ref:ref321";
+$playlist = $bc->find('find_playlist_by_reference_id', 'playlists', $refid);
 
 ```
 
