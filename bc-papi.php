@@ -97,7 +97,7 @@ class BCPAPI
 	 * @param mixed [$param] A single value passed in the find method
 	 * @return object An object containing all API return data
 	 */
-	public function find($call, $type = 'videos', $id = NULL)
+	public function find($call, $type = 'videos', $params = NULL)
 	{
 		$call = strtolower(preg_replace('/(?:find|_)+/i', '', $call));
 		switch($call)
@@ -122,8 +122,26 @@ class BCPAPI
 				throw new BCPAPIInvalidMethod($this, self::ERROR_INVALID_METHOD);
 				break;
 		}
+		
+		$offset = 0;
+		$id = NULL;
+		$limit = 20;
+		if(is_array($params)){
+		    if (isset($params['offset'])) {
+			$offset = $params['offset'];
+		    }
+		    if (isset($params['id'])) {
+			$id = $params['id'];
+		    }
+		    if (isset($params['limit'])) {
+			$limit = $params['limit'];
+		    }
+		}else{
+		    $id = $params;
+		}
+		
 		$this->validType($type);
-		$url = $this->url_read . $this->bc_account . '/' . $type . '/'. $id;
+		$url = $this->url_read . $this->bc_account . '/' . $type . '/'. $id.'?offset='.$offset.'&limit='.$limit;
 
 		$this->timeout_current = 0;
 
