@@ -129,6 +129,22 @@ class BCPAPI
 
 		return $this->getData($url);
 	}
+	
+	/**
+     * @param string $type
+     * @param string $terms   (e.g. tags:sea,mammal  or tags:nature,name:nature)
+     * @param string $sort    (default - "updated_at", OTHER - "name", "reference_id", "created_at", "published_at", "schedule_starts_at", "schedule_ends_at", "state", "plays_total", "plays_trailing_week")
+     * @return object
+     */
+    public function search($type = 'videos', $terms = '', $params = NULL)
+    {
+        $terms = urlencode($terms);
+        $offset = (isset($params['offset']) && $params['offset'] != '')?$params['offset']:0;
+        $sort = (isset($params['sort']) && $params['sort'] != '')?$params['sort']:'updated_at';
+        $limit = (isset($params['limit']) && $params['limit'] != '')?$params['limit']:20;
+        $url = $this->url_read . $this->bc_account . '/' . $type . '?q='. $terms.'&sort='.$sort.'&offset='.$offset.'&limit='.$limit;
+        return $this->getData($url);
+    }
 
 
 	/**
