@@ -36,6 +36,12 @@ echo '<img src="' . $playlist->videos[0]->poster . '" />';
 $refid = "ref:ref321";
 $playlist = $bc->find('find_playlist_by_reference_id', 'playlists', $refid);
 
+//search videos
+$q = 'tags:tagname'
+$sort='updated_at'
+$limit='20'
+$search_videos = $bc->search('videos', $q, $sort, $limit);
+
 ```
 
 
