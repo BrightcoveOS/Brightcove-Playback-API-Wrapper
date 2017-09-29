@@ -3,6 +3,8 @@
 require_once('bc-papi.php');
 require_once('bc-papi-cache.php');
 // Instantiate the class, passing it Policy Token from a player in your account and the account number
+// *** In order to use the search method the Policy Key must be created through the Policy API and it must be search-enabled.
+// see https://support.brightcove.com/overview-policy-api#Search_videos
 //sample brightcove values inserted below
 $bc = new BCPAPI(
     'BCpkADawqM0NK0Rq8n6sEQyWykemrqeSmIQqqVt3XBrdpl8TYlvqN3hwKphBJRnkPgx6WAbozCW_VgTOBCNf1AQRh8KnmXSXfveQalRc5-pyNlSod5XzP99If2U',
