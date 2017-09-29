@@ -139,7 +139,7 @@ class BCPAPI
 	public function search($type = 'videos', $q = '', $sort='updated_at',$limit='20')
         {
 		$url = $this->url_read . $this->bc_account . '/' . $type . '?q='. $q.'&sort='.$sort.'&limit='.$limit;
-    echo $url;
+
 	     	return $this->getData($url);
 	}
 
